@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.msa.reserve.dto.ReserveDto;
 import com.msa.reserve.entity.Reserve;
 import com.msa.reserve.repository.ReserveRepository;
 
@@ -24,4 +25,7 @@ public class ReserveService {
 	    return reserveRepository.findAll();
 	}
 
+	public void create(ReserveDto.ReserveReq dto) {
+		reserveRepository.save(dto.toEntity());
+	}
 }

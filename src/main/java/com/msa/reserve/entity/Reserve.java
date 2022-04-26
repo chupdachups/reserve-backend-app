@@ -4,10 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -32,11 +34,13 @@ public class Reserve {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToOne
+//	@OneToOne
+	@ManyToOne(targetEntity=Product.class, fetch=FetchType.EAGER)
 	@JoinColumn(name = "product_id", referencedColumnName = "product_id")
 	private Product product;
 	
-	@OneToOne
+//	@OneToOne//(cascade = CascadeType.ALL)
+	@ManyToOne(targetEntity=Account.class, fetch=FetchType.EAGER)
 	@JoinColumn(name = "account_id", referencedColumnName = "account_id")
 	private Account account;
 	
@@ -54,9 +58,12 @@ public class Reserve {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
     
-//    @Builder
-//    public Reserve(long productId, long userId,  ) {
-//    	
-//    }
+    @Builder
+    public Reserve(Product product, Account account, Date reserveFrom, Date reserveTo) {
+    	this.product = product;
+    	this.account = account;
+    	this.reserveFrom = reserveFrom;
+    	this.reserveTo = reserveTo;	
+    }
 
 }
