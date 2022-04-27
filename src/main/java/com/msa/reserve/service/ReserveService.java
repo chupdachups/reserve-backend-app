@@ -28,4 +28,9 @@ public class ReserveService {
 	public void create(ReserveDto.ReserveReq dto) {
 		reserveRepository.save(dto.toEntity());
 	}
+	
+	public List<Reserve> findReserveByAccount(long accountId) {
+		return reserveRepository.findByAccountId(accountId);
+	}
+
 }
