@@ -27,7 +27,6 @@ public class AccountController {
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public String creatAccount(@RequestBody @Valid final AccountDto.AccountReq dto) {
 		accountService.create(dto);
-		log.debug("test");
 		return "true";
 	}
 }
