@@ -25,7 +25,8 @@ public class ProductController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public String creatAccount(@RequestBody @Valid final ProductDto.ProductReq dto) {
+	public String creatProduct(@RequestBody @Valid final ProductDto.ProductReq dto) {
+		log.info("reserve-service creatProduct call");
 		productService.create(dto);
 		return "true";
 	}

@@ -26,6 +26,7 @@ public class AccountController {
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public String creatAccount(@RequestBody @Valid final AccountDto.AccountReq dto) {
+		log.info("reserve-service createAccount call");
 		accountService.create(dto);
 		return "true";
 	}
