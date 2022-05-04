@@ -6,6 +6,6 @@ ADD ./target/reserve-0.0.1-SNAPSHOT.jar  ./reserve.jar
 	
 ENTRYPOINT ["java", "-jar"]
 
-CMD ["reserve.jar"]
+CMD ["reserve.jar","--spring.profiles.active=k8s"]
 
 EXPOSE 8072
